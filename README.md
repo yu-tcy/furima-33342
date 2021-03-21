@@ -2,13 +2,13 @@
 
 ## users
 
-| Column          | Type   | Options    |
-| --------------- | ------ | -------    |
-| user-name       | string | null:false |
-| email           | string | null:false |
-| password        | string | null:false |
-| name            | string | null:false |
-| birthday        | string | null:false |
+| Column              | Type   | Options      |
+| ------------------- | ------ | ------------ |
+| user_name           | string | null:false   |
+| email               | string | unique: true |
+| encrypted_password  | string | null:false   |
+| name                | string | null:false   |
+| birthday            | date   | null:false   |
 
 ### Association
 
@@ -19,13 +19,17 @@
 
 ## items
 
-| Colum    | Type          | Options           |
-| -------- | --------------| ----------------- |
-| name     | string        | null:false        |
-| price    | string        | null:false        |
-| text     | text          | null:false        |
-| image    | ActiveStorage |                   |
-| user     | references    | foreign_key: true |
+| Colum       | Type          | Options           |
+| ----------- | --------------| ----------------- |
+| name        | string        | null:false        |
+| price       | integer       | null:false        |
+| text        | text          | null:false        |
+| user        | references    | foreign_key: true |
+| category_id | integer       | null:false        |
+| status_id   | integer       | null:false        |
+| tax_id      | integer       | null:false        |
+| area_id     | integer       | null:false        |
+| data_id     | integer       | null:false        |
 
 ### Association
 
@@ -58,6 +62,7 @@
 | apart     | string        | null:false        |
 | number    | string        | null:false        |
 | user      | references    | foreign_key: true |
+| state_id  | integer       | null:false        |
 
 ### Association
 
