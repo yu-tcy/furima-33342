@@ -1,24 +1,78 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users
 
-Things you may want to cover:
+| Column          | Type   | Options    |
+| --------------- | ------ | -------    |
+| user-name       | string | null:false |
+| email           | string | null:false |
+| password        | string | null:false |
+| name            | string | null:false |
+| birthday        | string | null:false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :orders
+- has_many :comments
 
-* Configuration
 
-* Database creation
+## items
 
-* Database initialization
+| Colum    | Type          | Options           |
+| -------- | --------------| ----------------- |
+| name     | string        | null:false        |
+| price    | string        | null:false        |
+| text     | text          | null:false        |
+| image    | ActiveStorage |                   |
+| user     | references    | foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- has_many :comments
+- belongs_to :user
+- has_one :order
 
-* Deployment instructions
 
-* ...
+## orders
+
+| Colum   | Type          | Options           |
+| ------- | ------------- | ----------------- |
+| user    | references    | foreign_key: true |
+| item    | references    | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :address
+
+
+## Address
+
+| Colum     | Type          | Options           |
+| ----------| ------------- | ----------------- |
+| postal    | string        | null:false        |
+| city      | string        | null:false        |
+| address   | string        | null:false        |
+| apart     | string        | null:false        |
+| number    | string        | null:false        |
+| user      | references    | foreign_key: true |
+
+### Association
+
+-belongs_to :order
+
+
+## Comments
+
+| Column    | Type          | Options           |
+| --------- | ------------- | ----------------- |
+| text      | text          | null:false        |
+| user      | references    | foreign_key: true |
+| item      | references    | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
