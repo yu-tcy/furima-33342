@@ -2,13 +2,16 @@
 
 ## users
 
-| Column              | Type   | Options      |
-| ------------------- | ------ | ------------ |
-| user_name           | string | null:false   |
-| email               | string | unique: true |
-| encrypted_password  | string | null:false   |
-| name                | string | null:false   |
-| birthday            | date   | null:false   |
+| Column              | Type   | Options                  |
+| ------------------- | ------ | ------------------------ |
+| user_name           | string | null:false               |
+| email               | string | unique: true, null:false |
+| encrypted_password  | string | null:false               |
+| family_name         | string | null:false               |
+| last_name           | string | null:false               |
+| family_name_2       | string | null:false               |
+| last_name_2         | string | null:false               |
+| birthday            | date   | null:false               | 
 
 ### Association
 
@@ -27,7 +30,7 @@
 | user        | references    | foreign_key: true |
 | category_id | integer       | null:false        |
 | status_id   | integer       | null:false        |
-| tax_id      | integer       | null:false        |
+| postage_id      | integer       | null:false        |
 | area_id     | integer       | null:false        |
 | data_id     | integer       | null:false        |
 
@@ -52,16 +55,16 @@
 - has_one :address
 
 
-## Address
+## Addresses
 
 | Colum     | Type          | Options           |
 | ----------| ------------- | ----------------- |
 | postal    | string        | null:false        |
 | city      | string        | null:false        |
 | address   | string        | null:false        |
-| apart     | string        | null:false        |
+| apart     | string        |                   |
 | number    | string        | null:false        |
-| user      | references    | foreign_key: true |
+| order     | references    | foreign_key: true |
 | state_id  | integer       | null:false        |
 
 ### Association
