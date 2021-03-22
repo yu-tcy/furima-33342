@@ -65,7 +65,7 @@
 | apart     | string        |                   |
 | number    | string        | null:false        |
 | order     | references    | foreign_key: true |
-| state_id  | integer       | null:false        |
+| area_id   | integer       | null:false        |
 
 ### Association
 
