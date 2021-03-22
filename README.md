@@ -32,7 +32,7 @@
 | status_id   | integer       | null:false        |
 | postage_id  | integer       | null:false        |
 | area_id     | integer       | null:false        |
-| data_id     | integer       | null:false        |
+| day_id      | integer       | null:false        |
 
 ### Association
 
