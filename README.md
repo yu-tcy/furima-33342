@@ -4,7 +4,7 @@
 
 | Column              | Type   | Options                  |
 | ------------------- | ------ | ------------------------ |
-| user_name           | string | null:false               |
+| nickname           | string | null:false               |
 | email               | string | unique: true, null:false |
 | encrypted_password  | string | null:false               |
 | family_name         | string | null:false               |
