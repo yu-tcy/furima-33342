@@ -92,6 +92,33 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name 2 不適正な文字が含まれています')
       end
+      it 'emailに@が含まれていないと登録できないこと' do
+        @user.email = 'aaaaa.000.bb.co.jp'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
+      end
+      it 'passwordが半角英字だけでは登録できないこと' do
+        @user.password = 'aaaaaa'
+        @user.password_confirmation = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include()
+      end
+      it 'passwordが半角数字だけでは登録できないこと' do
+        @user.password = '000000'
+        @user.password_confirmation = '000000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include()
+      end
+      it '苗字が漢字・平仮名・カタカナ以外では登録できないこと' do
+        @user.family_name_2 = 'umi'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Family name 2 不適正な文字が含まれています')
+      end
+      it '氏名が漢字・平仮名・カタカナ以外では登録できないこと' do
+        @user.last_name_2 = 'kinako'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name 2 不適正な文字が含まれています')
+      end
     end
   end
 end
