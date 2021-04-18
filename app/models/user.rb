@@ -13,7 +13,6 @@ class User < ApplicationRecord
       validates :last_name_2, format: { with: /\A[ァ-ヶー－]+\z/ }
     end
     validates :nickname
-    validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: "不適正な文字が含まれています" }
     validates :birthday
     validates :password, length: { minimum: 6 }, format: { with: /\A[a-z0-9]+\z/i, message: "英数字文字6以上"}
   end
