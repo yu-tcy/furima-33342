@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   with_options presence: true do
     validates :name
-    validates :price, numericality: { in: 300..9999999, message: "Out of setting range", format: { with: /\A[0-9]+\z/ }}
+    validates :price, inclusion: { in: 300..9999999, message: "Out of setting range", format: { with: /\A[0-9]+\z/ }}
     validates :text
     validates :image
   end
