@@ -127,7 +127,6 @@
     <% if @items.present? %>
       <ul class='item-lists'>
         <% @items.each do |item| %>
-        <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
           <li class='list'>
             <%= link_to item_path(item.id), method: :get do %>
             <div class='item-img-content'>
