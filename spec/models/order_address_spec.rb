@@ -15,6 +15,10 @@ RSpec.describe OrderAddress, type: :model do
         it '必要な情報を適切に入力すると、商品の購入ができること' do
           expect(@order_address).to be_valid
         end
+        it '建物名が抜けていても登録できること' do
+          @order_address.apart = ""
+          expect(@order_address).to be_valid
+        end
       end
       context '購入できない時' do
         it '郵便番号が必須である事' do
@@ -76,6 +80,11 @@ RSpec.describe OrderAddress, type: :model do
           @order_address.item_id = nil
           @order_address.valid?
           expect(@order_address.errors.full_messages).to include("Item can't be blank")
+        end
+        it '英数混合では登録できないこと' do
+          @order_address.number ="090aaaa5678"
+          @order_address.valid?
+          expect(@order_address.errors.full_messages).to include("Number is invalid")
         end
       end
     end
