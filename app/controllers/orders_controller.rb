@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :check_user, only: [:index, :create]
-  before_action :check_item
+  before_action :check, only: [:index, :create]
 
   def index
     @item = Item.find(params[:item_id])
@@ -26,9 +25,9 @@ class OrdersController < ApplicationController
     end
     
 
-    def check_user
+    def check
       @item = Item.find(params[:item_id])
-      if @item.user_id == current_user.id
+      if @item.user_id == current_user.id || @item.order.present?
         redirect_to root_path
       end
     end
@@ -40,13 +39,6 @@ class OrdersController < ApplicationController
         card: order_params[:token],
         currency: 'jpy'
       )
-    end
-
-    def check_item
-      @item = Item.find(params[:item_id])
-      if @item.order.present?
-        redirect_to root_path
-      end
     end
 
 end

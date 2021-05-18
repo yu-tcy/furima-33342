@@ -11,6 +11,8 @@ class OrderAddress
     validates :city
     validates :address
     validates :number, format: {with:/\A\d{10,11}\z/, message: "is invalid"}
+    validates :user_id
+    validates :item_id
   end
   
   with_options numericality: { other_than: 1 } do
