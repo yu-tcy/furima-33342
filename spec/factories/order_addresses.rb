@@ -7,7 +7,5 @@ FactoryBot.define do
     number      {"09012345678"}
     area_id     {2}
     token {"tok_abcdefghijk00000000000000000"}
-    user_id     {1}
-    item_id     {1}
   end
 end
