@@ -14,7 +14,7 @@ class User < ApplicationRecord
     end
     validates :nickname
     validates :birthday
-    validates :password, length: { minimum: 6 }, format: { with: /\A[a-z0-9]+\z/i, message: "英数字文字6以上"}
+    validates :password, length: { minimum: 6 }, format: { with: /\A[a-zA-Z0-9]+\z/, message: "英数字文字6以上"}
   end
 
   has_many :items
